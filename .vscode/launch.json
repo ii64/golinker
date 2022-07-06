@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Debug main",
+            "type": "go",
+            "request": "launch",
+            "mode": "exec",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "showRegisters": true,
+            "showGlobalVariables": true,
+            "dlvFlags": [
+                // "--log",
+                // "--log-output", "dap,rpc"
+            ]
+        },
+        
+    ]
+}

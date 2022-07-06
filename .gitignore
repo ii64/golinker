@@ -1,0 +1,4 @@
+_exp/
+_sample/
+*.o
+*.a

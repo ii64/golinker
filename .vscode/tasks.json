@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build debug current file",
+            "type": "shell",
+            // "command": "go-bootstrap build -gcflags=\"all=-N -l\" -o ${fileDirname}/${fileBasenameNoExtension} -x ${fileDirname}/${fileBasename}",
+            "command": "go build -gcflags=\"all=-N -l\" -o ${fileDirname}/${fileBasenameNoExtension} -x ${fileDirname}/${fileBasename}",
+            "group": "build"
+        },
+        {
+            "label": "Build current file",
+            "type": "shell",
+            // "command": "go-bootstrap build -x -o ${fileDirname}/${fileBasenameNoExtension} ${fileDirname}/${fileBasename}",
+            "command": "go build -x -o ${fileDirname}/${fileBasenameNoExtension} ${fileDirname}/${fileBasename}",
+            "group": "build"
+        }
+    ]
+}
