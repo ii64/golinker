@@ -345,11 +345,16 @@ func (st *LinkState) getAsmFuncStubAMD64(fnOff uint64, bio *bufio.Writer) (err e
 		return
 	}
 
+	// need stack grow prologue/epilogue
+	needStackGrow := fnStackSz > 0
+
 	// check stack, if it below desired address, call morestack.
-	bio.WriteString("_entry:\n")
-	bio.WriteString("\tMOVQ (TLS), R14\n")
-	bio.WriteString(fmt.Sprintf("\tLEAQ %d(SP), R12\n", -int64(fnStackSz)))
-	bio.WriteString("\tJBE _more_stack\n\n")
+	if needStackGrow {
+		bio.WriteString("_entry:\n")
+		bio.WriteString("\tMOVQ (TLS), R14\n")
+		bio.WriteString(fmt.Sprintf("\tLEAQ %d(SP), R12\n", -int64(fnStackSz)))
+		bio.WriteString("\tJBE _more_stack\n\n")
+	}
 
 	// --- stack to regs ---
 	argsysv := []string{"DI", "SI", "DX", "CX", "R8", "R9"}
@@ -414,9 +419,11 @@ func (st *LinkState) getAsmFuncStubAMD64(fnOff uint64, bio *bufio.Writer) (err e
 	bio.WriteRune('\n')
 
 	// more stack
-	bio.WriteString("_more_stack:\n")
-	bio.WriteString("\tCALL runtime·morestack_noctxt<>(SB)\n")
-	bio.WriteString("\tJMP _entry\n\n")
+	if needStackGrow {
+		bio.WriteString("_more_stack:\n")
+		bio.WriteString("\tCALL runtime·morestack_noctxt<>(SB)\n")
+		bio.WriteString("\tJMP _entry\n\n")
+	}
 
 	err = bio.Flush()
 	return
