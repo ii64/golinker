@@ -5,7 +5,8 @@
             "type": "go",
             "request": "launch",
             "mode": "exec",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            // "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${workspaceFolder}/main",
             "showRegisters": true,
             "showGlobalVariables": true,
             "dlvFlags": [
