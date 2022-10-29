@@ -185,6 +185,10 @@ func align8(addr uint64) uint64 {
 func (st *LinkState) registerFunc(off uint64, sz uint64, name string) {
 	st.sFnSize[off] = sz
 	st.sFnOrder = append(st.sFnOrder, off)
+
+	if _, exist := st.sFn[off]; exist {
+		panic(fmt.Sprintf("attempting to replace known off=%x name=%s sz=%d", off, name, sz))
+	}
 	st.sFn[off] = st.sProgData[off : off+sz] // !! ref from ProgData
 	st.sFnName[off] = name
 }

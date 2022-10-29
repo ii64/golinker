@@ -140,7 +140,7 @@ func (st *LinkState) loadRelocationAMD64(dat []byte) (err error) {
 			}
 
 			st.File.ByteOrder.PutUint32(dat, uint32(val))
-			fmt.Printf("rela: %s\t| %+#v\t| %+#v\t| %+#v \n", typ,
+			fmt.Printf("rela off=%x: %s\t| %+#v\t| %+#v\t| %+#v \n", begin, typ,
 				dat,
 				rela, sym)
 		default:

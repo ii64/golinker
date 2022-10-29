@@ -46,11 +46,11 @@ func main() {
 	_main(os.Args[1:])
 	// _main([]string{
 	// 	// "-extld=ld",
-	// 	"-out=./_example/internal/native",
-	// 	// "-out=./_sample/_exp/go/hdr",
-	// 	"-stub=./_example/internal/native/stub.go",
+	// 	// "-out=./_example/internal/native",
+	// 	"-out=./_sample/_exp/go/hdr",
+	// 	// "-stub=./_example/internal/native/stub.go",
 	// 	// "-stub=./_sample/_exp/go/hdr/hdr.go",
-	// 	// "-stub=./_sample/_exp/go/hdr/uring.go",
+	// 	"-stub=./_sample/_exp/go/hdr/uring.go",
 
 	// 	// "-entryname=__native_entry2__",
 	// 	"-fallback-rawbytes-x86",
@@ -58,8 +58,8 @@ func main() {
 	// 	"-extsymstub",
 
 	// 	// "./_sample/_exp/libexp-amd64.a",
-	// 	"./_example/native/libnative-amd64.a",
-	// 	// "/usr/lib/liburing.a",
+	// 	// "./_example/native/libnative-amd64.a",
+	// 	"/usr/lib/liburing.a",
 
 	// 	// "-extld=aarch64-linux-gnu-ld",
 	// 	// "./_sample/_exp/libexp-arm64.a",

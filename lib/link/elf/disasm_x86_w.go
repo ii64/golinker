@@ -28,8 +28,10 @@ func (st *LinkState) doDisasmAMD64() (err error) {
 
 		insts, err = disasm2.ArchAMD64.DecodeBlock(code, fnAddr)
 		if err != nil {
-			err = fmt.Errorf("disasm %s (%x) :%w",
-				fnName, fnAddr,
+			err = fmt.Errorf("disasm %q (%x) (%x): %w",
+				fnName,
+				fnAddr,
+				code,
 				err)
 			return
 		}
